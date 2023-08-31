@@ -51,6 +51,18 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
+        // 아이템 클릭 시 DetailActivity로 이동, 데이터 넘겨주기
+        adapter.itemClick = object : MainAdapter.ItemClick {
+            override fun onClick(view: View, position: Int) {
+                val intent = Intent(this@MainActivity, DetailActivity::class.java)
+                val item = dataList[position]
+                intent.putExtra("name",item.aName)
+                intent.putExtra("location", item.aLocation)
+                intent.putExtra("price", item.aPrice)
+                startActivity(intent)
+            }
+        }
+
         // 리스트 구분선
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         val decoration = DividerItemDecoration(this,DividerItemDecoration.VERTICAL)

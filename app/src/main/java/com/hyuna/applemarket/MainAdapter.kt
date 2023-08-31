@@ -49,8 +49,8 @@ class MainAdapter(val mItems: MutableList<MainItem>) : RecyclerView.Adapter<Main
     // 홀더 생성
     inner class Holder(val binding: ItemRecyclerviewBinding) : RecyclerView.ViewHolder(binding.root) {
         val iconImageView = binding.imageView
-        val name = binding.textView
-        val location = binding.textView2
-        val price = binding.textView3
+        val name = binding.textName
+        val location = binding.textLocation
+        val price = binding.textPrice
     }
 }
